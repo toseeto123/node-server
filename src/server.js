@@ -19,6 +19,10 @@ const server = async() => {
     app.use('/user', userRouter)
     //blog로 시작하는것은 blogRouter사용
     app.use("/blog", blogRouter)
+    //comment로 시작하는것은 commentRouter 사용
+    //commentRoute의 mergeParams:true 설정으로 /:blogId값도 반영할수있음
+    // 해당 내용은 blogRoute로 보냄
+    // app.use("/blog/:blogId/comment", commentRouter)
 
     app.listen(3000, () =>  console.log('server listening on port 3000'))
   }catch(err){

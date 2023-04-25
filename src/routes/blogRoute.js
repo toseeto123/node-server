@@ -2,7 +2,11 @@ const { Router } = require('express');
 const blogRouter = Router();
 const { Blog } = require('../models/Blog');
 const { User } = require('../models/User');
-const { isValidObjectId } = require('mongoose') //mongoose가 검증
+const { isValidObjectId } = require('mongoose'); //mongoose가 검증
+const { commentRouter } = require('./commentRoute');
+
+//middleware 추가
+blogRouter.use("/:blogId/comment", commentRouter);
 
 blogRouter.post("/", async(req,res) => {
     try{
