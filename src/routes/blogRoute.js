@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const blogRouter = Router();
-const { Blog } = require('../models/Blog');
-const { User } = require('../models/User');
+const { Blog,User } = require('../models');
 const { isValidObjectId } = require('mongoose'); //mongoose가 검증
 const { commentRouter } = require('./commentRoute');
 
