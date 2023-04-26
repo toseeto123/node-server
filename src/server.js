@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const { userRouter, blogRouter } = require ('./routes');
 const mongoose = require('mongoose');
+const { generateFakeData } = require('../faker');
 
 const MONGO_URI = 'mongodb+srv://taipoone:TlCH7HmnG4tKmWdm@devmeet.jqdhxcr.mongodb.net/test'
 
@@ -9,8 +10,10 @@ const MONGO_URI = 'mongodb+srv://taipoone:TlCH7HmnG4tKmWdm@devmeet.jqdhxcr.mongo
 const server = async() => {
   try{
     await mongoose.connect(MONGO_URI)
-    mongoose.set('debug', true)
-    console.log('MongoDB connected')
+    //mongoose.set('debug', true)
+
+    await generateFakeData(100, 10, 300); // 100명 user,각유저당 10개의 blog ,30000개의 comment
+    console.log('MongoDB connected');
 
     app.use(express.json())
 
